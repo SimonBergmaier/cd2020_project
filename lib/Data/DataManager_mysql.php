@@ -25,7 +25,7 @@ class DataManager implements \IDataManager {
 
     private static function getConnection() {
         if (!isset(self::$__connection)) {
-            self::$__connection = new \PDO('mysql:host=localhost;dbname=fh_2020_cd_1910455011;charset=utf8', 'cd-2020', '$ecurePassword');
+            self::$__connection = new \PDO(getenv('DB_CONFSTRING'), getenv('DB_UNAME'), getenv('DB_PASSWD'));
         }
         return self::$__connection;
     }
