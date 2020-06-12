@@ -38,7 +38,7 @@ if (isset($_GET["errors"])) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/blog">Continuous-Delivery Blog</a>
+			<a class="navbar-brand" href="/">Continuous-Delivery Blog</a>
 		</div>
 
 		<div class="navbar-collapse collapse" id="bs-navbar-collapse-1">
