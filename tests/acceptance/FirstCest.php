@@ -10,6 +10,6 @@ class FirstCest
     public function tryToTest(AcceptanceTester $I)
     {
         $I->amOnPage('/');
-        $I->see('Continuous Delivery Blog');
+        $I->see('Continuous-Delivery Blog');
     }
 }
