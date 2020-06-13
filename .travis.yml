@@ -17,7 +17,7 @@ jobs:
       name: "Testing with CodeCeption"
       script:
         script:
-          - php $TRAVIS_BUILD_DIR/vendor/bin/codecept run
+          - vendor/bin/codecept.bat run --steps
     - stage: build
       name: "Heroku build"
       deploy:
