@@ -15,9 +15,10 @@ jobs:
   include:
     - stage: testing
       name: "Testing with CodeCeption"
-      before-script:
+      before_script:
           - php -S localhost:8888 -t web > /dev/null 2>&1 &
           - phantomjs --webdriver=4444 >/dev/null 2>&1 &
+          - php codecept build
       script:
         script:
           - php vendor/bin/codecept run
