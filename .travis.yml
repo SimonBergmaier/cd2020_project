@@ -15,21 +15,14 @@ jobs:
   include:
     - stage: testing
       name: "Testing with CodeCeption"
-      before_script:
-        # Start WebServer on localhost:8000
-        - php artisan serve --quiet 2>&1 >/dev/null &
-        # Start PhantomJS
-        - phantomjs --webdriver=4444 2>&1 >/dev/null &
-        # Give it some time to start
-        - sleep 5
       script:
         script:
-          - vendor/codeception/codeception/codecept
+          - $TRAVIS_BUILD_DIR
+          - composer install
+          - php $TRAVIS_BUILD_DIR/vendor/codeception/codeception/codecept
     - stage: build
       name: "Heroku build"
-      branches:
-        only:
-        - master
+      if: branch = master
       deploy:
         provider: heroku
         api_key:
