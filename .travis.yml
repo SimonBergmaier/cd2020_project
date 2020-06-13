@@ -6,10 +6,24 @@ php:
 install:
     composer install
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: NYimCAozVTYFBiOQKHGs46lPyJB/2WzxdGAqXe2Xaau2uCe8ueZuorgE9N4p54D4HEV3zkar3WIp4R6zgaBSGkJBFVcL+EaWcOm+QKcD/AydTPh2hYKFsPKngjLeoKGu6umfPNQv4hvFazSMoNXbMD3WX37PNH01cHoCfzn/5H23WGC/joujFZHrw6XF5Z1MSVGip8hn2FDJc4CJKZnkCEk3CR02defgjE/BkVP2aXM/7oSy3E8E1sAENjdIwp5wNlPT+Ts0iV/y4RptQx1sxBS3ACO3AfANMDICkNV9pcVIe+tAGLqzAggRsZXPVq/kbT4jlEE1WUAObCtuSJzW5U/GAV+WbjYyz/aVEW5Dqh6z/ZjcuPz6gLoCmEcIJYyiBdnP+dSGiTzNNCJm0VSEslN1PzaFZMU/XHGqxRzNy5X03v+16jnKsMA+cbhJBP41Y2Agia+Cz6LMOuteBeRR98oOKSWYvsuDIlemNvTzZK5H3On3FuLRTGnMfDnPxKsBo8GdPrbEK7edbGZy6DsCN6pCkE+5u3bCOKjrlQN64VJn1kXsbv3kKmmxXE7JDkSq5vMuch9/OZqqDmRvKe/8Nu4qw2NL7BCHnIqS1MxOcPUO/YtwMGbvaD3XuNZbN43+xzooKHgT/1ssvWxExPAxP6iTubsIfWI4TxKEhEGUJIE=
-  app: desolate-lake-59822
-  on:
-    repo: semperfidelis17/cd2020_project
+stages:
+  - analyzing
+  - testing
+  - build
+
+jobs:
+  include:
+    - stage: testing
+      name: "Testing with CodeCeption"
+      script:
+        script:
+          - vendor/bin/codecept run
+    - stage: build
+      name: "Heroku build"
+      deploy:
+        provider: heroku
+        api_key:
+          secure: NYimCAozVTYFBiOQKHGs46lPyJB/2WzxdGAqXe2Xaau2uCe8ueZuorgE9N4p54D4HEV3zkar3WIp4R6zgaBSGkJBFVcL+EaWcOm+QKcD/AydTPh2hYKFsPKngjLeoKGu6umfPNQv4hvFazSMoNXbMD3WX37PNH01cHoCfzn/5H23WGC/joujFZHrw6XF5Z1MSVGip8hn2FDJc4CJKZnkCEk3CR02defgjE/BkVP2aXM/7oSy3E8E1sAENjdIwp5wNlPT+Ts0iV/y4RptQx1sxBS3ACO3AfANMDICkNV9pcVIe+tAGLqzAggRsZXPVq/kbT4jlEE1WUAObCtuSJzW5U/GAV+WbjYyz/aVEW5Dqh6z/ZjcuPz6gLoCmEcIJYyiBdnP+dSGiTzNNCJm0VSEslN1PzaFZMU/XHGqxRzNy5X03v+16jnKsMA+cbhJBP41Y2Agia+Cz6LMOuteBeRR98oOKSWYvsuDIlemNvTzZK5H3On3FuLRTGnMfDnPxKsBo8GdPrbEK7edbGZy6DsCN6pCkE+5u3bCOKjrlQN64VJn1kXsbv3kKmmxXE7JDkSq5vMuch9/OZqqDmRvKe/8Nu4qw2NL7BCHnIqS1MxOcPUO/YtwMGbvaD3XuNZbN43+xzooKHgT/1ssvWxExPAxP6iTubsIfWI4TxKEhEGUJIE=
+        app: desolate-lake-59822
+        on:
+          repo: semperfidelis17/cd2020_project
