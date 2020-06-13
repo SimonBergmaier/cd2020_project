@@ -13,11 +13,6 @@ stages:
 
 jobs:
   include:
-    - stage: testing
-      name: "Testing with CodeCeption"
-      script:
-        script:
-          - php vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       deploy:
