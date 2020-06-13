@@ -28,10 +28,9 @@ jobs:
       name: "Testing with CodeCeption"
       before_script:
           # Run webserver
-          - php -S localhost:8000 --docroot public &>/dev/null&
+        - php -S localhost:8000 --docroot public &>/dev/null&
       script:
-        script:
-          - "php codecept.phar run --steps"
+        - php vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       if: branch = master
