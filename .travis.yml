@@ -27,7 +27,9 @@ jobs:
     - stage: testing
       name: "Testing with CodeCeption"
       before_script:
-        - php -S 127.0.0.1:8888 -t >/dev/null 2>&1 &
+          - php -S 127.0.0.1:8000 -t /path/to/web/root >/dev/null 2>&1 &
+          # Start up the webdriver.
+          - phantomjs --webdriver=4444 >/dev/null 2>&1 &
       script:
         - php vendor/bin/codecept run
     - stage: build

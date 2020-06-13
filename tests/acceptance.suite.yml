@@ -10,8 +10,5 @@ modules:
         - \Helper\Acceptance
         - WebDriver:
             url: http://127.0.0.1:8000
-            browser: chrome
-            capabilities:
-                "goog:chromeOptions":
-                    args: ["--headless", "--disable-gpu", "--window-size=1024,768"]
+            browser: phantomjs
     step_decorators: ~
