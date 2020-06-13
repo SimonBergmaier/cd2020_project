@@ -1,4 +1,11 @@
 language: php
+
+php:
+    - '7.4'
+
+install:
+    composer install
+
 deploy:
   provider: heroku
   api_key:
