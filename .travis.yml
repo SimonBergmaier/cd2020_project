@@ -17,9 +17,7 @@ jobs:
       name: "Testing with CodeCeption"
       script:
         script:
-          - $TRAVIS_BUILD_DIR
-          - composer install
-          - php $TRAVIS_BUILD_DIR/vendor/codeception/codeception/codecept
+          - php vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       if: branch = master
