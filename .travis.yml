@@ -15,12 +15,16 @@ jobs:
   include:
     - stage: testing
       name: "Testing with CodeCeption"
+      before_script:
+        # Start WebServer on localhost:8000
+        - php artisan serve --quiet 2>&1 >/dev/null &
+        # Start PhantomJS
+        - phantomjs --webdriver=4444 2>&1 >/dev/null &
+        # Give it some time to start
+        - sleep 5
       script:
         script:
-            - php ./codecept run -c vendor/codeception/module-asserts/
-            - php ./codecept run unit -g core
-            - php ./codecept run cli
-
+          - vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       deploy:
