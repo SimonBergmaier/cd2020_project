@@ -3,9 +3,6 @@ language: php
 php:
     - '7.4'
 
-addons:
-  chrome: stable
-
 # faster builds on new travis setup not using sudo
 sudo: false
 
@@ -27,7 +24,7 @@ jobs:
     - stage: testing
       name: "Testing with CodeCeption"
       before_script:
-          - php -S 127.0.0.1:8000 -t /path/to/web/root >/dev/null 2>&1 &
+          - php -S 127.0.0.1:8000 -t $TRAVIS_BUILD_DIR >/dev/null 2>&1 &
           # Start up the webdriver.
           - phantomjs --webdriver=4444 >/dev/null 2>&1 &
       script:
