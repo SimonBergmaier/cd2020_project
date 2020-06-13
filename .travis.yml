@@ -24,9 +24,12 @@ jobs:
         - sleep 5
       script:
         script:
-          - php vendor/bin/codecept run
+          - vendor/bin/codecept
     - stage: build
       name: "Heroku build"
+      branches:
+        only:
+        - master
       deploy:
         provider: heroku
         api_key:
