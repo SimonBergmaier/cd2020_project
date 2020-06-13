@@ -7,7 +7,6 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
-            url: https://desolate-lake-59822.herokuapp.com
-        - \Helper\Acceptance
-    step_decorators: ~
+        - WebDriver:
+            url: 'http://127.0.0.1:8888'
+            browser: phantomjs
