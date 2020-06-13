@@ -1,6 +1,6 @@
 <?php
 
-class FirstCest
+class FirstAcceptanceTest
 {
     public function _before(AcceptanceTester $I)
     {

@@ -1,6 +1,6 @@
 <?php 
 
-class FirstCest
+class FirstFunctionalTest
 {
     public function _before(FunctionalTester $I)
     {
