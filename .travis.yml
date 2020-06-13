@@ -17,7 +17,7 @@ jobs:
       name: "Testing with CodeCeption"
       script:
         script:
-          - vendor/bin/codecept.bat run --steps
+          - php vendor/codeception/codeception/codecept run --steps
     - stage: build
       name: "Heroku build"
       deploy:
