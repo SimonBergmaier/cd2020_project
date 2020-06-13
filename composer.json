@@ -7,7 +7,4 @@
         "codeception/module-asserts": "^1.0.0",
         "twbs/bootstrap": "3.3.4"
     },
-    "require-dev": {
-        "codeception/module-webdriver": "^1.1"
-    }
 }
