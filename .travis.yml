@@ -14,6 +14,9 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+install:
+    composer install
+
 stages:
   - analyzing
   - testing
@@ -28,8 +31,7 @@ jobs:
           - php -S localhost:8000 --docroot public &>/dev/null&
       script:
         script:
-          - composer install
-          - php vendor/bin/codecept run
+          - "php codecept.phar run --steps"
     - stage: build
       name: "Heroku build"
       if: branch = master
