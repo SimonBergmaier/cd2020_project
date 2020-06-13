@@ -3,6 +3,17 @@ language: php
 php:
     - '7.4'
 
+addons:
+  chrome: stable
+
+# faster builds on new travis setup not using sudo
+sudo: false
+
+# cache vendor dirs
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 install:
     composer install
 
@@ -20,8 +31,12 @@ jobs:
           - php -S localhost:8000 --docroot public &>/dev/null&
       script:
         script:
-          - cd $TRAVIS_BUILD_DIR
-          - vendor/bin/codecept run
+            - |
+              cd tests
+              php -S 127.0.0.1:8080 -t public > /dev/null 2>&1&
+              cd ..
+              vendor/bin/codecept build
+              vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       if: branch = master
