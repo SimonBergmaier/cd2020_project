@@ -1,0 +1,9 @@
+language: php
+
+deploy:
+    provider: heroku
+    api_key:
+        secure: api_key
+    app: desolate-lake-59822
+    on:
+        repo: semperfidelis17/cd2020_project
