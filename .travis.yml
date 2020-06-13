@@ -3,11 +3,6 @@ language: php
 php:
     - '7.4'
 
-# Select what we should cache
-cache:
-  paths:
-  - vendor/
-
 install:
     composer install
 
@@ -20,12 +15,9 @@ jobs:
   include:
     - stage: testing
       name: "Testing with CodeCeption"
-      before-script:
-        # Run webserver
-          - php -S localhost:8085 --docroot public &>/dev/null&
       script:
         script:
-          - php vendor/codeception/codeception/codecept run --steps
+          - php vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       deploy:
