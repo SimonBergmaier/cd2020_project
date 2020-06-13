@@ -17,7 +17,10 @@ jobs:
       name: "Testing with CodeCeption"
       script:
         script:
-          - php vendor/bin/codecept run
+            - php ./codecept run -c vendor/codeception/module-asserts/
+            - php ./codecept run unit -g core
+            - php ./codecept run cli
+
     - stage: build
       name: "Heroku build"
       deploy:
