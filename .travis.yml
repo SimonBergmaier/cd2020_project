@@ -24,7 +24,7 @@ jobs:
         - sleep 5
       script:
         script:
-          - vendor/bin/codecept run
+          - php vendor/bin/codecept run
     - stage: build
       name: "Heroku build"
       deploy:
