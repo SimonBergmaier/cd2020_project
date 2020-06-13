@@ -13,15 +13,15 @@ if (isset($_GET["errors"])) {
 <head>
 	<meta charset="utf-8">
 
-	<title>Continuous-Delivery Blog</title>
+	<title>SCM4 Book Shop</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="assets/main.css" rel="stylesheet">
-	<script src="assets/jquery-1.11.2.min.js" defer></script>
+	<script src="components/jquery/jquery.min.js" defer></script>
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js" defer></script>
+	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js" defer></script>
 
 
 </head>
@@ -38,7 +38,7 @@ if (isset($_GET["errors"])) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">Continuous-Delivery Blog</a>
+			<a class="navbar-brand" href="/blog">Continuous Delivery Blog</a>
 		</div>
 
 		<div class="navbar-collapse collapse" id="bs-navbar-collapse-1">
