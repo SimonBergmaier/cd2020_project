@@ -7,8 +7,6 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - \Helper\Acceptance
-        - WebDriver:
+        - PhpBrowser:
             url: http://127.0.0.1:8000
-            browser: phantomjs
-    step_decorators: ~
+        - \Helper\Acceptance
