@@ -24,7 +24,7 @@ jobs:
         - sleep 5
       script:
         script:
-          - vendor/bin/codecept
+          - vendor/codeception/codeception/codecept
     - stage: build
       name: "Heroku build"
       branches:
