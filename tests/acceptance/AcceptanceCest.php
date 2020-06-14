@@ -28,7 +28,7 @@ class AcceptanceCest
         $I->click('Login now');
         // we are using label to match user_name field
         $I->fillField('userName', 'FirstUser');
-        $I->fillField('password','testuser');
+        $I->fillField('password','Testuser');
         $I->click('loginbtn');
         $I->see('Logged in as FirstUser');
     }

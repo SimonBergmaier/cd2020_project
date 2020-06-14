@@ -115,9 +115,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `passhash`) VALUES
-(1, 'FirstUser', 'b54681a580d2dffa8834aab3483dab5fe8d3d095'),
-(2, 'SecondUser', 'b54681a580d2dffa8834aab3483dab5fe8d3d095'),
-(3, 'ThirdUser', 'b54681a580d2dffa8834aab3483dab5fe8d3d095');
+(1, 'FirstUser', '76251a601a94e2473db21d20ef42eb0e2f2935d4'),
+(2, 'SecondUser', '9a67e89075172149960404ac76ad74ac6d54961d'),
+(3, 'ThirdUser', 'e97a299a7d0831ea2b4057d060a6a6e0c0034811');
 
 --
 -- Indizes der exportierten Tabellen
