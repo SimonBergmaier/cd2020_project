@@ -29,11 +29,10 @@ jobs:
     name: Heroku build
     if: branch = master
     script:
-    - 
-    deploy:
-      provider: heroku
-      api_key:
-        secure: mcRCHdq2Iv9ftof0yDgvMBjHhiXvusW3Blg5Hh0CyUMyoyv9UPT/PfBxE3eP0wGxInFj/Xtn3WbyfGmgJtCRDRGL78r6Ud0d7LbNHK1X77Sp3GltTh5Q8ubkYrTqzBzszjacAyFhIB2Iryocvpqtu67Aabawowo3F5VhIpZQ0r2/6KCLeQdvjOCD8HW8roDEbuQs2pm1pxUFQYIBHhMp7Cu94QPC/aZXF8G8pC44Nlikz60w52swEe0X0DVvucluXmP87NHHBf7SlivGoxzJk2+S86s7snEIaQ/FeP5tw59T0lHX67C+46KgoOyPuCg1EqGgA6OiVKf9BrylJpQmPBMCMpRSz7DPxZDYA8YmrQwg4DHF24BRvnlxsxXBfM62yG8JvHdOCBS7pHaJttsdqJ9F+DMLLAnfAlmPYdl4qJXftcbxafWrHy+ksn7SilFf1CfSyxCfZs+n0p9mH7Tz5+qCn6yJZYEWTZLI81J2IEGF+hAIb/QeyU4jkYov22VLRcJxbz7x2CS31Y+8ZultUNbZ9uSSUxKhnxqH8vO8lR31uYSwxfzXjJe38x66veEzPAFh+hrg7hdjzF4ztJikMm51Vb1/IUhMXgs25mrg4USxw643YRgsWwJUHk8IGN+RYA2u3EyS76B40sPN1oQjk1gAAj1Cv8q4Yp5t5BvoCBA=
-      app: desolate-lake-59822
-      on:
-        repo: semperfidelis17/cd2020_project
+        deploy:
+            provider: heroku
+            api_key:
+                secure: mcRCHdq2Iv9ftof0yDgvMBjHhiXvusW3Blg5Hh0CyUMyoyv9UPT/PfBxE3eP0wGxInFj/Xtn3WbyfGmgJtCRDRGL78r6Ud0d7LbNHK1X77Sp3GltTh5Q8ubkYrTqzBzszjacAyFhIB2Iryocvpqtu67Aabawowo3F5VhIpZQ0r2/6KCLeQdvjOCD8HW8roDEbuQs2pm1pxUFQYIBHhMp7Cu94QPC/aZXF8G8pC44Nlikz60w52swEe0X0DVvucluXmP87NHHBf7SlivGoxzJk2+S86s7snEIaQ/FeP5tw59T0lHX67C+46KgoOyPuCg1EqGgA6OiVKf9BrylJpQmPBMCMpRSz7DPxZDYA8YmrQwg4DHF24BRvnlxsxXBfM62yG8JvHdOCBS7pHaJttsdqJ9F+DMLLAnfAlmPYdl4qJXftcbxafWrHy+ksn7SilFf1CfSyxCfZs+n0p9mH7Tz5+qCn6yJZYEWTZLI81J2IEGF+hAIb/QeyU4jkYov22VLRcJxbz7x2CS31Y+8ZultUNbZ9uSSUxKhnxqH8vO8lR31uYSwxfzXjJe38x66veEzPAFh+hrg7hdjzF4ztJikMm51Vb1/IUhMXgs25mrg4USxw643YRgsWwJUHk8IGN+RYA2u3EyS76B40sPN1oQjk1gAAj1Cv8q4Yp5t5BvoCBA=
+            app: desolate-lake-59822
+            on:
+                repo: semperfidelis17/cd2020_project
