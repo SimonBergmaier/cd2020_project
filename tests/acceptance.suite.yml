@@ -11,6 +11,6 @@ modules:
             url: http://127.0.0.1:8000
         - \Helper\Acceptance
         - Db:
-              dsn: 'mysql:host=localhost;dbname=cd_2020_db'
+              dsn: 'mysql:host=http://127.0.0.1:3306;dbname=cd_2020_db'
               user: 'root'
               password: ''
