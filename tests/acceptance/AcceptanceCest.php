@@ -20,7 +20,7 @@ class AcceptanceCest
         $I->seeInDatabase("comment", ["id" => "1", "articleId" => "2", "authorId" => "1", "text" => "First Comment Second Article"]);
     }
 
-    public function isLoginWorkin(AcceptanceTester $I){
+    public function isLoginWorking(AcceptanceTester $I){
         $I->amOnPage('/');
         $I->see('Not logged in!');
         $I->click('Not logged in!');
