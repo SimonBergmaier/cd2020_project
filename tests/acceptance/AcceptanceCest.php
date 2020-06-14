@@ -7,13 +7,13 @@ class AcceptanceCest
     }
 
     // tests
-    public function isOnStartPage(AcceptanceTester $I)
+    public function IsOnStartpage(AcceptanceTester $I)
     {
         $I->amOnPage('/');
         $I->see('Continuous-Delivery Blog');
     }
 
-    public function isDatabaseCreated(AcceptanceTester $I){
+    public function IsDatabaseCreated(AcceptanceTester $I){
         $I->seeInDatabase("categories", ["id" => "1", "name" => "Politics"]);
         $I->seeInDatabase("article", ["id" => "1", "category" => "1", "title" => "Title First Article"]);
         $I->seeInDatabase("users", ["id" => "1", "username" => "FirstUser"]);
@@ -21,32 +21,80 @@ class AcceptanceCest
     }
 
     public function isLoginWorking(AcceptanceTester $I){
+        $username = 'FirstUser';
         $I->amOnPage('/');
         $I->see('Not logged in!');
         $I->click('Not logged in!');
         $I->see('Login now');
         $I->click('Login now');
-        // we are using label to match user_name field
-        $I->fillField('userName', 'FirstUser');
+        $I->fillField('userName', $username);
         $I->fillField('password','Testuser');
         $I->click('loginbtn');
-        $I->see('Logged in as FirstUser');
+        $I->see('Logged in as ' . $username);
     }
 
     public function clicksOnFirstCategory(AcceptanceTester $I){
-        // simple link
+        $category_id = 1;
         $I->amOnPage('/');
-        $category = $I->grabFromDatabase('categories', 'name', ['id' => '1']);
+        $category = $I->grabFromDatabase('categories', 'name', ['id' => $category_id]);
         $I->click($category);
-        $I->amOnPage('index.php/?view=list&categoryId=' . 1);
-        $I->see($I->grabFromDatabase('article', 'title', array(['category' => '1'])[0]));
+        $I->amOnPage('index.php/?view=list&categoryId=' . $category_id);
+        $I->see($I->grabFromDatabase('article', 'title', array(['category' => $category_id])[0]));
+    }
+
+    public function clicksOnEmptyCategory(AcceptanceTester $I){
+        $category_id = 2;
+        $I->amOnPage('/');
+        $category = $I->grabFromDatabase('categories', 'name', ['id' =>  $category_id]);
+        $I->click($category);
+        $I->amOnPage('index.php/?view=list&categoryId=' . $category_id);
+        $I->see('No articles in this category');
     }
 
     public function clicksOnViewFirstArticle(AcceptanceTester $I){
-        // simple link
-        $I->amOnPage('index.php/?view=list&categoryId=' . 1);
+        $category_id = 1;
+        $article_id = 2;
+        $I->amOnPage('index.php/?view=list&categoryId=' . $category_id = 1);
         $I->click("View Article");
-        $I->amOnPage('index.php?view=article&id=' . 2);
-        $I->see($I->grabFromDatabase('article', 'title', ['id' => '2']));
+        $I->amOnPage('index.php?view=article&id=' . $article_id);
+        $I->see($I->grabFromDatabase('article', 'title', ['id' => $article_id]));
     }
+
+    public function CommentWithoutLogin(AcceptanceTester $I){
+        $article_id = 3;
+        $I->amOnPage('index.php?view=article&id=' . $article_id);
+        $I->dontSee('Create Comment:');
+        //$I->fillField('text', 'Hello this is a new Comment on ' . $I->grabFromDatabase('article', 'title', ['id' => $article_id]));
+        //$I->see('Not logged in.');
+    }
+
+    public function CommentWithLogin(AcceptanceTester $I){
+        $username = 'FirstUser';
+        $I->amOnPage('/');
+        $I->see('Not logged in!');
+        $I->click('Not logged in!');
+        $I->see('Login now');
+        $I->click('Login now');
+        $I->fillField('userName', $username);
+        $I->fillField('password','Testuser');
+        $I->click('loginbtn');
+        $I->see('Logged in as ' . $username);
+        $article_id = 3;
+        $I->amOnPage('index.php?view=article&id=' . $article_id);
+        $I->see('Create Comment:');
+        $comment = 'Hello this is a new Comment on ' . $I->grabFromDatabase('article', 'title', ['id' => $article_id]);
+        $I->fillField('#inputText', $comment);
+        $I->click('Create Comment...');
+        $I->seeInDatabase("comment", ["text" => $comment]);
+
+        $I->see($comment);
+    }
+
+    public function NewArticleWithoutLogin(AcceptanceTester $I){
+        $I->amOnPage('index.php');
+        $I->dontSee('Create new Article');
+    }
+
+
+
 }
