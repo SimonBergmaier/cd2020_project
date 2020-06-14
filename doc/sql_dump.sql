@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `fh_2018_web4_1610458007`
+-- Datenbank: `cd_2020_db`
 --
 CREATE DATABASE IF NOT EXISTS `cd_2020_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `cd_2020_db`;
