@@ -39,7 +39,7 @@ require_once('views/partials/header.php');
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-6">
-						<button type="submit" class="btn btn-default">Login</button>
+						<button type="submit" class="btn btn-default" name="loginbtn">Login</button>
                         <a href="index.php?view=register" class="btn btn-default">Register</a>
 					</div>
 				</div>

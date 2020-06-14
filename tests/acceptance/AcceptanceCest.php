@@ -13,16 +13,38 @@ class AcceptanceCest
         $I->see('Continuous-Delivery Blog');
     }
 
-    public function databaseCreatedTest(AcceptanceTester $I){
+    public function isDatabaseCreated(AcceptanceTester $I){
+        $I->seeInDatabase("categories", ["id" => "1", "name" => "Politics"]);
         $I->seeInDatabase("article", ["id" => "1", "category" => "1", "title" => "Title First Article"]);
     }
 
-    public function clicksOnPolitics(AcceptanceTester $I){
-        // simple link
+    public function isLoginWorkin(AcceptanceTester $I){
         $I->amOnPage('/');
-        $I->click('Politics');
-        $I->see('Second Test Article');
+        $I->see('Not logged in!');
+        $I->click('Not logged in!');
+        $I->see('Login now');
+        $I->click('Login now');
+        // we are using label to match user_name field
+        $I->fillField('userName', 'scm4');
+        $I->fillField('password','scm4');
+        $I->click('loginbtn');
+        $I->see('Logged in as scm4');
     }
 
+    public function clicksOnFirstCategory(AcceptanceTester $I){
+        // simple link
+        $I->amOnPage('/');
+        $category = $I->grabFromDatabase('categories', 'name', ['id' => '1']);
+        $I->click($category);
+        $I->amOnPage('index.php/?view=list&categoryId=' . 1);
+        $I->see($I->grabFromDatabase('article', 'title', array(['category' => '1'])[0]));
+    }
 
+    public function clicksOnViewFirstArticle(AcceptanceTester $I){
+        // simple link
+        $I->amOnPage('index.php/?view=list&categoryId=' . 1);
+        $I->click("View Article");
+        $I->amOnPage('index.php?view=article&id=' . 2);
+        $I->see($I->grabFromDatabase('article', 'title', ['id' => '2']));
+    }
 }
