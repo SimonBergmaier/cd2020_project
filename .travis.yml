@@ -1,48 +1,39 @@
 language: php
-
 php:
-    - '7.4'
-
-# faster builds on new travis setup not using sudo
+- '7.4'
 sudo: false
-
-# cache vendor dirs
 cache:
   directories:
-    - $HOME/.composer/cache
-
-install:
-    composer install
-
+  - "$HOME/.composer/cache"
+install: composer install
 stages:
-  - analyzing
-  - testing
-  - build
-
+- analyzing
+- testing
+- build
 jobs:
   include:
-    - stage: testing
-      name: "Testing with CodeCeption"
-      env:
-        - DB_CONFSTRING='mysql:host=127.0.0.1;dbname=cd_2020_db;charset=utf8'
-        - DB_UNAME='root'
-        - DB_PASSWD=''
-      services:
-        - mysql
-      before_script:
-          - php -S 127.0.0.1:8000 -t $TRAVIS_BUILD_DIR >/dev/null 2>&1 &
-          - mysql -u root < doc/sql_dump.sql
-      script:
-        - php vendor/bin/codecept run
-    - stage: build
-      name: "Heroku build"
-      if: branch = master
-      script:
-        -
-      deploy:
-        provider: heroku
-        api_key:
-          secure: NYimCAozVTYFBiOQKHGs46lPyJB/2WzxdGAqXe2Xaau2uCe8ueZuorgE9N4p54D4HEV3zkar3WIp4R6zgaBSGkJBFVcL+EaWcOm+QKcD/AydTPh2hYKFsPKngjLeoKGu6umfPNQv4hvFazSMoNXbMD3WX37PNH01cHoCfzn/5H23WGC/joujFZHrw6XF5Z1MSVGip8hn2FDJc4CJKZnkCEk3CR02defgjE/BkVP2aXM/7oSy3E8E1sAENjdIwp5wNlPT+Ts0iV/y4RptQx1sxBS3ACO3AfANMDICkNV9pcVIe+tAGLqzAggRsZXPVq/kbT4jlEE1WUAObCtuSJzW5U/GAV+WbjYyz/aVEW5Dqh6z/ZjcuPz6gLoCmEcIJYyiBdnP+dSGiTzNNCJm0VSEslN1PzaFZMU/XHGqxRzNy5X03v+16jnKsMA+cbhJBP41Y2Agia+Cz6LMOuteBeRR98oOKSWYvsuDIlemNvTzZK5H3On3FuLRTGnMfDnPxKsBo8GdPrbEK7edbGZy6DsCN6pCkE+5u3bCOKjrlQN64VJn1kXsbv3kKmmxXE7JDkSq5vMuch9/OZqqDmRvKe/8Nu4qw2NL7BCHnIqS1MxOcPUO/YtwMGbvaD3XuNZbN43+xzooKHgT/1ssvWxExPAxP6iTubsIfWI4TxKEhEGUJIE=
-        app: desolate-lake-59822
-        on:
-          repo: semperfidelis17/cd2020_project
+  - stage: testing
+    name: Testing with CodeCeption
+    env:
+    - DB_CONFSTRING='mysql:host=127.0.0.1;dbname=cd_2020_db;charset=utf8'
+    - DB_UNAME='root'
+    - DB_PASSWD=''
+    services:
+    - mysql
+    before_script:
+    - php -S 127.0.0.1:8000 -t $TRAVIS_BUILD_DIR >/dev/null 2>&1 &
+    - mysql -u root < doc/sql_dump.sql
+    script:
+    - php vendor/bin/codecept run
+  - stage: build
+    name: Heroku build
+    if: branch = master
+    script:
+    - 
+    deploy:
+      provider: heroku
+      api_key:
+        secure: mcRCHdq2Iv9ftof0yDgvMBjHhiXvusW3Blg5Hh0CyUMyoyv9UPT/PfBxE3eP0wGxInFj/Xtn3WbyfGmgJtCRDRGL78r6Ud0d7LbNHK1X77Sp3GltTh5Q8ubkYrTqzBzszjacAyFhIB2Iryocvpqtu67Aabawowo3F5VhIpZQ0r2/6KCLeQdvjOCD8HW8roDEbuQs2pm1pxUFQYIBHhMp7Cu94QPC/aZXF8G8pC44Nlikz60w52swEe0X0DVvucluXmP87NHHBf7SlivGoxzJk2+S86s7snEIaQ/FeP5tw59T0lHX67C+46KgoOyPuCg1EqGgA6OiVKf9BrylJpQmPBMCMpRSz7DPxZDYA8YmrQwg4DHF24BRvnlxsxXBfM62yG8JvHdOCBS7pHaJttsdqJ9F+DMLLAnfAlmPYdl4qJXftcbxafWrHy+ksn7SilFf1CfSyxCfZs+n0p9mH7Tz5+qCn6yJZYEWTZLI81J2IEGF+hAIb/QeyU4jkYov22VLRcJxbz7x2CS31Y+8ZultUNbZ9uSSUxKhnxqH8vO8lR31uYSwxfzXjJe38x66veEzPAFh+hrg7hdjzF4ztJikMm51Vb1/IUhMXgs25mrg4USxw643YRgsWwJUHk8IGN+RYA2u3EyS76B40sPN1oQjk1gAAj1Cv8q4Yp5t5BvoCBA=
+      app: desolate-lake-59822
+      on:
+        repo: semperfidelis17/cd2020_project
