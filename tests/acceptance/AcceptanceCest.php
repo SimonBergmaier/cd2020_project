@@ -16,6 +16,8 @@ class AcceptanceCest
     public function isDatabaseCreated(AcceptanceTester $I){
         $I->seeInDatabase("categories", ["id" => "1", "name" => "Politics"]);
         $I->seeInDatabase("article", ["id" => "1", "category" => "1", "title" => "Title First Article"]);
+        $I->seeInDatabase("users", ["id" => "1", "username" => "FirstUser"]);
+        $I->seeInDatabase("comment", ["id" => "1", "articleId" => "2", "authorId" => "1", "text" => "First Comment Second Article"]);
     }
 
     public function isLoginWorkin(AcceptanceTester $I){
@@ -25,10 +27,10 @@ class AcceptanceCest
         $I->see('Login now');
         $I->click('Login now');
         // we are using label to match user_name field
-        $I->fillField('userName', 'scm4');
-        $I->fillField('password','scm4');
+        $I->fillField('userName', 'FirstUser');
+        $I->fillField('password','testuser');
         $I->click('loginbtn');
-        $I->see('Logged in as scm4');
+        $I->see('Logged in as FirstUser');
     }
 
     public function clicksOnFirstCategory(AcceptanceTester $I){
