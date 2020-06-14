@@ -9,7 +9,6 @@ install: composer install
 stages:
 - analyzing
 - testing
-- build
 jobs:
   include:
   - stage: testing
