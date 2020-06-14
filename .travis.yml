@@ -26,7 +26,7 @@ jobs:
       env:
         - DB_CONFSTRING=mysql:host=localhost;dbname=cd_2020_db;charset=utf8
         - DB_UNAME=root
-        - DB_PASSWD=
+        - DB_PASSWD=''
       services:
         - mysql
       before_script:
