@@ -24,8 +24,8 @@ jobs:
     - stage: testing
       name: "Testing with CodeCeption"
       env:
-        - DB_CONFSTRING=mysql:host=127.0.0.1;dbname=cd_2020_db;charset=utf8
-        - DB_UNAME=root
+        - DB_CONFSTRING='mysql:host=127.0.0.1;dbname=cd_2020_db;charset=utf8'
+        - DB_UNAME='root'
         - DB_PASSWD=''
       services:
         - mysql
