@@ -6,5 +6,8 @@
         "codeception/module-phpbrowser": "^1.0.0",
         "codeception/module-asserts": "^1.0.0",
         "twbs/bootstrap": "3.3.4"
+    },
+    "require-dev": {
+        "codeception/module-db": "^1.0"
     }
 }
