@@ -1,4 +1,8 @@
 {
+    "config": {
+        "vendor-dir": "assets",
+        "bin-dir": "assets/bin"
+    },
     "require": {
         "php": "^7.4",
         "components/jquery": "^3.5",

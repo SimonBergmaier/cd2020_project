@@ -1,6 +1,6 @@
 <?php
 require_once('inc/bootstrap.php');
-require('vendor/autoload.php');
+require('assets/autoload.php');
 
 $default_view = 'list';
 $view = $default_view;
