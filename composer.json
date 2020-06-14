@@ -1,5 +1,6 @@
 {
     "require": {
+        "php": "^7.4",
         "components/jquery": "^3.5",
         "codeception/codeception": "^4.1",
         "phpunit/phpunit": "^9.2",
