@@ -2,6 +2,10 @@
 
 class AcceptanceCest
 {
+
+    private $username = "FirstUser";
+    private $cookie = null;
+
     public function _before(AcceptanceTester $I)
     {
     }
@@ -21,16 +25,16 @@ class AcceptanceCest
     }
 
     public function isLoginWorking(AcceptanceTester $I){
-        $username = 'FirstUser';
         $I->amOnPage('/');
         $I->see('Not logged in!');
         $I->click('Not logged in!');
         $I->see('Login now');
         $I->click('Login now');
-        $I->fillField('userName', $username);
+        $I->fillField('userName', $this->username);
         $I->fillField('password','Testuser');
         $I->click('loginbtn');
-        $I->see('Logged in as ' . $username);
+        $I->see('Logged in as ' . $this->username);
+        $this->cookie   = $I->grabCookie('PHPSESSID');
     }
 
     public function clicksOnFirstCategory(AcceptanceTester $I){
@@ -68,17 +72,12 @@ class AcceptanceCest
         //$I->see('Not logged in.');
     }
 
+    /**
+     * @depends isLoginWorking
+     * @param AcceptanceTester $I
+     */
     public function CommentWithLogin(AcceptanceTester $I){
-        $username = 'FirstUser';
-        $I->amOnPage('/');
-        $I->see('Not logged in!');
-        $I->click('Not logged in!');
-        $I->see('Login now');
-        $I->click('Login now');
-        $I->fillField('userName', $username);
-        $I->fillField('password','Testuser');
-        $I->click('loginbtn');
-        $I->see('Logged in as ' . $username);
+        $I->setCookie('PHPSESSID', $this->cookie);
         $article_id = 3;
         $I->amOnPage('index.php?view=article&id=' . $article_id);
         $I->see('Create Comment:');
