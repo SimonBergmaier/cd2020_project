@@ -59,15 +59,13 @@ class Controller extends BaseObject {
 	 * @return bool
 	 * @throws Exception
 	 */
-	public function invokePostAction() : bool {
+	public function invokePostAction() {
 
 		if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 			throw new \Exception('Controller can only handle POST requests.');
-			return null;
 		}
 		elseif (!isset($_REQUEST[self::ACTION])) {
 			throw new \Exception(self::ACTION . ' not specified.');
-			return null;
 		}
 
 
@@ -174,7 +172,7 @@ class Controller extends BaseObject {
         //check for given target and try to fall back to previous page if needed
         if ($target == null) {
             if (!isset($_REQUEST[self::PAGE])) {
-                throw new Exception('Missing target for forward.');
+                throw new \Exception('Missing target for forward.');
             }
             $target = $_REQUEST[self::PAGE];
         }
