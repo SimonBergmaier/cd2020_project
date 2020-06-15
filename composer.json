@@ -10,10 +10,5 @@
     },
     "require-dev": {
         "codeception/module-db": "^1.0"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "chmod -R 775 vendor"
-        ]
     }
 }
