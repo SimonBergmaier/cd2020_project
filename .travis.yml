@@ -1,7 +1,5 @@
 language: php
 
-php:
-- '7.4'
 sudo: false
 
 cache:
@@ -9,12 +7,15 @@ cache:
   - "$HOME/.composer/cache"
 
 stages:
-- testing
+- Testing
+- Sonarcloud analysis
 
 jobs:
   include:
   - stage: testing
     name: Testing with CodeCeption
+    php:
+    - '7.4'
     env:
     - DB_CONFSTRING='mysql:host=127.0.0.1;dbname=cd_2020_db;charset=utf8'
     - DB_UNAME='root'
@@ -27,3 +28,14 @@ jobs:
     - mysql -u root < doc/sql_dump.sql
     script:
     - php vendor/bin/codecept run
+
+  - stage: sonarcloud
+    name: CodeCoverage analysis with sonarcloud
+    addons:
+        sonarcloud:
+            organization: "cd-2020-project"
+            token:
+                secure: "WwiM2rF/EAGwKrQk+g758FVO1OYe0Jjlyeb+wzLMbiPpKXlSZnvA+2xSV7VfXP3gTRNoX2dug0AepipYVS+Qk3iZtTeh0X6bmNpmfL8hIK1x/8L0FOhFc7xQhcTKLlkLbA1W0iSoyTBLgOgFbpg9GqkazQrc5Y4vNNvYAoBLvza0Ppwfm4XwG5eeILJmoySZf8fsAJEBI+hgdLxEBfWP/y2lyxfQFakKu9+WNMj1+ndRsrqx2NYMeyzzi0sVpKfc8jlr4tXl3C2nIUq7jI0ZKcj48ZYtMTJ7YV5emzQhVxDTZHn8u1HII9uQcAFkGG9zi7rU6y0r0HWlnNFMnnMcLatS5TM1Lqv6NHeg+P/loq4l+CpRg5kpQ8dzzI7TZsJbTXTXrDSnZjYcrdcOHHQQ/GIZKO7poZRjhSCz6pHiOA/wBO0jOfcwal6CI4I2y5TUEJvRZtTeH8hHW0JnJN9hKslcOF/p6VmZoYuVeVhILcYtnmmICqscBS9KlHdPHg2hLl+tb6BdC45VLzI4dKBJ9pXzEKisz/fD5nGeOLr06Yg2EzMuKwDXCsmjo/GB2UbARnb3q8Qm3dMIqNzZ2vRvwBgS25I2ebbuvOEOHBOl/5fjJXs2xs1ASMtaTq+wafwZZiBofRtg3FSypiI4ywFGFa92UVdII59FIiIAadDh0ek="
+
+    script:
+        - sonar-scanner
