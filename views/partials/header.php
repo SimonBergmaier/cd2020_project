@@ -16,12 +16,12 @@ if (isset($_GET["errors"])) {
 	<title>Continuous-Delivery Blog</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="assets/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/twbs/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="assets/main.css" rel="stylesheet">
-	<script src="assets/components/jquery/jquery.min.js" defer></script>
+	<script src="vendor/components/jquery/jquery.min.js" defer></script>
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-	<script src="assets/twbs/bootstrap/dist/js/bootstrap.min.js" defer></script>
+	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js" defer></script>
 
 
 </head>

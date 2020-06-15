@@ -104,5 +104,3 @@ components/
 vendor/
 tests/_support/_generated
 tests/_output
-assets/
-!assets/main.css

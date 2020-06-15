@@ -1,8 +1,4 @@
 {
-    "config": {
-        "vendor-dir": "assets",
-        "bin-dir": "assets/bin"
-    },
     "require": {
         "php": "^7.4",
         "components/jquery": "^3.5",
@@ -14,5 +10,10 @@
     },
     "require-dev": {
         "codeception/module-db": "^1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "chmod -R 775 vendor"
+        ]
     }
 }
