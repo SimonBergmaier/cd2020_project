@@ -47,9 +47,9 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`id`, `category`, `title`, `subtitle`, `text`, `author`, `active`, `creationDate`) VALUES
 (1, 1, 'Title First Article', 'Subtitle First Article', 'Text First Article', 1, b'1', '2020-05-17 12:47:34'),
-(2, 1, 'Title Second Article', 'Subtitle Second Article', 'Text First Article', 1, b'1', '2020-05-17 14:34:07'),
-(3, 4, 'Title Third Article', 'Subtitle Third Article', 'Text First Article', 2, b'1', '2020-05-18 15:00:37'),
-(4, 3, 'Title Fourth Article', 'Subtitle Fourth Article', 'Text First Article', 3, b'0', '2020-05-19 18:24:14');
+(2, 1, 'Title Second Article', 'Subtitle Second Article', 'Text Second Article', 1, b'1', '2020-05-17 14:34:07'),
+(3, 4, 'Title Third Article', 'Subtitle Third Article', 'Text Third Article', 2, b'1', '2020-05-18 15:00:37'),
+(4, 3, 'Title Fourth Article', 'Subtitle Fourth Article', 'Text Fourth Article', 3, b'0', '2020-05-19 18:24:14');
 
 -- --------------------------------------------------------
 

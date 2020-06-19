@@ -42,7 +42,7 @@ if (isset($_GET["errors"])) {
 
 		<div class="navbar-collapse collapse" id="bs-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li <?php if(!isset($_REQUEST['view']) || $_REQUEST['view'] == 'list') echo 'class="active"'; ?>><a href="index.php">Home</a></li>
+				<li <?php if(!isset($_REQUEST['view']) || $_REQUEST['view'] == 'list') echo 'class="active"'; ?>><a href="/">Home</a></li>
                 <?php if($user != null): ?>
                 <li <?php if(isset($_REQUEST['view']) && $_REQUEST['view'] == 'newEntry') echo 'class="active"'; ?>><a href="index.php?view=newEntry">Create new Article</a></li>
                 <?php endif; ?>
