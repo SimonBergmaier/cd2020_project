@@ -22,7 +22,7 @@ if (isset($_GET["errors"])) {
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script>
 
-    <script src="https://cdn.tiny.cloud/1/<?php getenv('TINY_MCE_KEY') ?>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/<?php print getenv("TINYMCE_KEY") ?>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
         selector: 'textarea#inputText',
